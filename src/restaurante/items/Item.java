@@ -1,4 +1,4 @@
-package restaurante.itens;
+package restaurante.items;
 
 import restaurante.exceptions.InvalidIdException;
 import restaurante.validators.IdValidator;

@@ -2,8 +2,8 @@ package restaurante.menus;
 
 import java.util.ArrayList;
 
-import restaurante.itens.Item;
-import restaurante.itens.MainCourse;
+import restaurante.items.Item;
+import restaurante.items.MainCourse;
 
 public class MainCourseMenu extends Menu {
     public static void showMain() {

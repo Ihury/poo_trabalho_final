@@ -1,6 +1,6 @@
 package restaurante.menus;
 
-import restaurante.itens.Ingredient;
+import restaurante.items.Ingredient;
 
 import java.util.ArrayList;
 

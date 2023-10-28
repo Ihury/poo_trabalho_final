@@ -1,4 +1,4 @@
-package restaurante.itens;
+package restaurante.items;
 
 import restaurante.enums.PackageType;
 import restaurante.exceptions.InvalidIdException;

@@ -1,6 +1,6 @@
 import restaurante.exceptions.InvalidIdException;
-import restaurante.itens.Ingredient;
-import restaurante.itens.MainCourse;
+import restaurante.items.Ingredient;
+import restaurante.items.MainCourse;
 import restaurante.menus.IngredientsMenu;
 import restaurante.menus.ItemsMenu;
 import restaurante.menus.MainMenu;
