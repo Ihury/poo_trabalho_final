@@ -1,8 +1,8 @@
-package restaurante.items;
+package restaurant.items;
 
-import restaurante.exceptions.InvalidIdException;
-import restaurante.validators.IdValidator;
-import restaurante.validators.PriceValidator;
+import restaurant.exceptions.InvalidIdException;
+import restaurant.validators.IdValidator;
+import restaurant.validators.PriceValidator;
 
 public abstract class Item {
     private String id;

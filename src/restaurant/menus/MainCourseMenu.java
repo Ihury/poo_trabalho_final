@@ -1,9 +1,8 @@
-package restaurante.menus;
+package restaurant.menus;
 
 import java.util.ArrayList;
 
-import restaurante.items.Item;
-import restaurante.items.MainCourse;
+import restaurant.items.MainCourse;
 
 public class MainCourseMenu extends Menu {
     public static void showMain() {
@@ -26,7 +25,7 @@ public class MainCourseMenu extends Menu {
 
     public static void listMainCourses(ArrayList<MainCourse> items) {
         for (int i = 0; i < items.size(); i++) {
-            Item item = items.get(i);
+            MainCourse item = items.get(i);
             System.out.println((i + 1) + " - " + item);
         }
     }

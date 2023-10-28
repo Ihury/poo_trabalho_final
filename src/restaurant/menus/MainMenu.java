@@ -1,4 +1,4 @@
-package restaurante.menus;
+package restaurant.menus;
 
 public class MainMenu extends Menu {
     public static void showMain() {

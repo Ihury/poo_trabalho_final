@@ -1,18 +1,23 @@
-import restaurante.exceptions.InvalidIdException;
-import restaurante.items.Ingredient;
-import restaurante.items.MainCourse;
-import restaurante.menus.IngredientsMenu;
-import restaurante.menus.ItemsMenu;
-import restaurante.menus.MainMenu;
-import restaurante.menus.Menu;
-import restaurante.menus.MainCourseMenu;
+import restaurant.exceptions.InvalidIdException;
+import restaurant.items.Beverage;
+import restaurant.items.Dessert;
+import restaurant.items.Ingredient;
+import restaurant.items.MainCourse;
+import restaurant.menus.DessertsMenu;
+import restaurant.menus.IngredientsMenu;
+import restaurant.menus.ItemsMenu;
+import restaurant.menus.MainMenu;
+import restaurant.menus.Menu;
+import restaurant.menus.MainCourseMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static ArrayList<Ingredient> ingredients = new ArrayList<>();
-    private static ArrayList<MainCourse> mainCourses = new ArrayList<>();
+    private static final ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private static final ArrayList<MainCourse> mainCourses = new ArrayList<>();
+    private static final ArrayList<Dessert> desserts = new ArrayList<>();
+    private static final ArrayList<Beverage> beverages = new ArrayList<>();
     private static Scanner sc;
 
     public static void main(String[] args) {
@@ -143,7 +148,7 @@ public class Main {
                     startMainCoursesMenu();
                     break;
                 case "2":
-                    // startDessertsMenu();
+                    startDessertsMenu();
                     break;
                 case "3":
                     // startDrinksMenu();
@@ -259,6 +264,113 @@ public class Main {
                             mainCourses.remove(mainCourseIndex - 1);
                         }
                         startMainCoursesMenu();
+                    } catch (NumberFormatException e) {
+                        System.out.println("Opção inválida!");
+                        waitEnter();
+                    }
+            }
+        } while (!opt.equals("s"));
+    }
+
+    private static void startDessertsMenu() {
+        String opt;
+        do {
+            DessertsMenu.showMain();
+            opt = sc.nextLine();
+
+            switch (opt) {
+                case "1":
+                    showDesserts();
+                    break;
+                case "2":
+                    addDessert();
+                    break;
+                case "3":
+                    removeDessert();
+                    break;
+                case "v":
+                    startItensMenu();
+                    break;
+                case "s":
+                    leave();
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    waitEnter();
+            }
+        } while (!opt.equals("s"));
+    }
+
+    private static void showDesserts() {
+        String opt;
+        do {
+            DessertsMenu.showMainCourses(desserts);
+            opt = sc.nextLine();
+
+            switch (opt) {
+                case "v":
+                    startDessertsMenu();
+                    break;
+                case "s":
+                    leave();
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    waitEnter();
+            }
+        } while (!opt.equals("s"));
+    }
+
+    private static void addDessert() {
+        Menu.clearConsole();
+        try {
+            System.out.print("Informe o ID da sobremesa: ");
+            String id = sc.nextLine();
+            System.out.print("Informe o nome da sobremesa: ");
+            String name = sc.nextLine();
+            System.out.print("Informe o preço da sobremesa: ");
+            double price = Double.parseDouble(sc.nextLine());
+            System.out.print("Informe o preço de custo da sobremesa: ");
+            double costPrice = Double.parseDouble(sc.nextLine());
+            System.out.print("Informe a descrição da sobremesa: ");
+            String description = sc.nextLine();
+            System.out.print("Informe o tempo de preparo da sobremesa: ");
+            String preparationTime = sc.nextLine();
+            System.out.print("Informe a quantidade de calorias da sobremesa: ");
+            double calorieCount = Double.parseDouble(sc.nextLine());
+            Dessert dessert = new Dessert(id, name, price, costPrice, description, preparationTime, calorieCount);
+            desserts.add(dessert);
+            System.out.println("Sobremesa adicionada!");
+            waitEnter();
+        } catch (InvalidIdException e) {
+            System.out.println(e.getMessage());
+            waitEnter();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Preço inválido!");
+            waitEnter();
+        }
+    }
+
+    private static void removeDessert() {
+        String opt;
+        do {
+            DessertsMenu.showRemoveMainCourse(desserts);
+            opt = sc.nextLine();
+
+            switch (opt) {
+                case "v":
+                    startDessertsMenu();
+                    break;
+                case "s":
+                    leave();
+                    break;
+                default:
+                    try {
+                        int dessertIndex = Integer.parseInt(opt);
+                        if (dessertIndex > 0 && dessertIndex <= desserts.size()) {
+                            desserts.remove(dessertIndex - 1);
+                        }
+                        startDessertsMenu();
                     } catch (NumberFormatException e) {
                         System.out.println("Opção inválida!");
                         waitEnter();

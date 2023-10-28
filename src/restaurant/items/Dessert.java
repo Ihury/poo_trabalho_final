@@ -1,7 +1,7 @@
-package restaurante.items;
+package restaurant.items;
 
-import restaurante.exceptions.InvalidIdException;
-import restaurante.utils.NumberFormatter;
+import restaurant.exceptions.InvalidIdException;
+import restaurant.utils.NumberFormatter;
 
 public class Dessert extends ItemWithIngredients {
     private String description;

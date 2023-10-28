@@ -1,4 +1,4 @@
-package restaurante.validators;
+package restaurant.validators;
 
 public class PriceValidator {
     public static void validate(double price) throws IllegalArgumentException {

@@ -1,6 +1,6 @@
-package restaurante.items;
+package restaurant.items;
 
-import restaurante.exceptions.InvalidIdException;
+import restaurant.exceptions.InvalidIdException;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package restaurante.validators;
+package restaurant.validators;
 
-import restaurante.exceptions.InvalidIdException;
+import restaurant.exceptions.InvalidIdException;
 
 public class IdValidator {
     private static final String VALID_FORMAT = "AA111";

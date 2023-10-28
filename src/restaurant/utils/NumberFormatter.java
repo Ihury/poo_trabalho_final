@@ -1,4 +1,4 @@
-package restaurante.utils;
+package restaurant.utils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

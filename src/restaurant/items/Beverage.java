@@ -1,8 +1,8 @@
-package restaurante.items;
+package restaurant.items;
 
-import restaurante.enums.PackageType;
-import restaurante.exceptions.InvalidIdException;
-import restaurante.utils.NumberFormatter;
+import restaurant.enums.PackageType;
+import restaurant.exceptions.InvalidIdException;
+import restaurant.utils.NumberFormatter;
 
 public class Beverage extends Item {
     private double packageSizeInMilliliters;

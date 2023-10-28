@@ -1,4 +1,4 @@
-package restaurante.menus;
+package restaurant.menus;
 
 public class Menu {
     public static final String RESTAURANT_NAME = "RESTAURANTE DELÍCIAS DE UDIA";

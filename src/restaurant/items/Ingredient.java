@@ -1,4 +1,4 @@
-package restaurante.items;
+package restaurant.items;
 
 public class Ingredient {
     private String name;

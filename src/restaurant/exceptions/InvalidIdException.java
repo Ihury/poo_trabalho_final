@@ -1,4 +1,4 @@
-package restaurante.exceptions;
+package restaurant.exceptions;
 
 public class InvalidIdException extends Exception {
     private String validFormat;

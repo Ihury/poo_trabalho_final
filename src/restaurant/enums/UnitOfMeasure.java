@@ -1,4 +1,4 @@
-package restaurante.enums;
+package restaurant.enums;
 
 public enum UnitOfMeasure {
     KILOGRAMS("kg"),
