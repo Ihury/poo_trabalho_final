@@ -106,9 +106,10 @@ public class MainCoursesMenu extends Menu {
             System.out.print("Informe a descrição do prato: ");
             String description = sc.nextLine();
             System.out.print("Informe o tempo de preparo do prato: ");
-            String preparationTime = sc.nextLine();
+            String preparationTime = sc.nextLine();            
 
             MainCourse mainCourse = new MainCourse(id, name, price, costPrice, description, preparationTime);
+            IngredientsMenu.addIngredientsToItem(mainCourse);
             Restaurant.mainCourses.add(mainCourse);
             infoMessage("Prato adicionado!");
         } catch (InvalidIdException | IllegalArgumentException e) {

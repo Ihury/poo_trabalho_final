@@ -1,7 +1,10 @@
 package restaurant.menus;
 
 import restaurant.Restaurant;
+import restaurant.items.Dessert;
 import restaurant.items.Ingredient;
+import restaurant.items.ItemWithIngredients;
+import restaurant.items.MainCourse;
 
 import java.util.ArrayList;
 
@@ -122,5 +125,77 @@ public class IngredientsMenu extends Menu {
                     removeIngredient();
                 }
         }
+    }
+
+    public static void addIngredientsToItem(ItemWithIngredients item) {
+        if (Restaurant.ingredients.size() > 0) {
+            System.out.print("Deseja adicionar um ingrediente ao item?\n1 - Sim\n2 - Não\nEscolha: ");
+            String choose = sc.nextLine();
+
+            switch (choose) {
+                case "1":
+                    addIngredientToItem(item);
+                    break;
+                case "2":
+                    break;
+                default:
+                    invalidOption();
+                    returnToItemMenu(item);
+            }
+        }
+    }
+
+    private static void addIngredientToItem(ItemWithIngredients item) {
+        clearConsole();
+        showHead();
+        listIngredients(Restaurant.ingredients);
+        showFooter();
+        System.out.print("Informe o ingrediente que deseja adicionar: ");
+        String opt = sc.nextLine();
+        switch (opt) {
+            case "s":
+                leave();
+                break;
+            case "v":
+                break;
+            default:
+                int ingredientIndex = Integer.parseInt(opt);
+                Ingredient ingredient = Restaurant.ingredients.get(ingredientIndex - 1);
+                item.addIngredient(ingredient);
+                infoMessage("Ingrediente adicionado com sucesso!");
+                clearConsole();
+                ArrayList<Ingredient> ingredients = item.getIngredients();
+                if (ingredients.size() > 0) {
+                    System.out.println(SEPARATOR_BAR);
+                    System.out.println("INGREDIENTES ADICIONADOS");
+                    System.out.println(SEPARATOR_BAR);
+                    for (int i = 0; i < ingredients.size(); i++) {
+                        Ingredient itemIngredient = ingredients.get(i);
+                        System.out.println((i + 1) + " - " + itemIngredient);
+                    }
+                    System.out.println(SEPARATOR_BAR);
+                }
+                System.out.print("Deseja adicionar outro ingrediente?\n1 - Sim\n2 - Não\nEscolha: ");
+                String choose = sc.nextLine();
+                switch (choose) {
+                    case "1":
+                        addIngredientToItem(item);
+                        break;
+                    case "2":
+                        break;
+                    default:
+                        invalidOption();
+                        returnToItemMenu(item);
+                }
+        }
+    }
+
+    public static void returnToItemMenu(ItemWithIngredients item) {
+        if (item instanceof MainCourse)
+            MainCoursesMenu.startMainCoursesMenu();
+        else if (item instanceof Dessert)
+            DessertsMenu.startDessertsMenu();
+        else
+            MainMenu.startMainMenu();
     }
 }

@@ -109,7 +109,9 @@ public class DessertsMenu extends Menu {
             String preparationTime = sc.nextLine();
             System.out.print("Informe a quantidade de calorias da sobremesa: ");
             double calorieCount = Double.parseDouble(sc.nextLine());
+
             Dessert dessert = new Dessert(id, name, price, costPrice, description, preparationTime, calorieCount);
+            IngredientsMenu.addIngredientsToItem(dessert);
             Restaurant.desserts.add(dessert);
             infoMessage("Sobremesa adicionada!");
         } catch (InvalidIdException | IllegalArgumentException e) {

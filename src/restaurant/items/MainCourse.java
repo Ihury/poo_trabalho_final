@@ -1,5 +1,7 @@
 package restaurant.items;
 
+import java.util.ArrayList;
+
 import restaurant.exceptions.InvalidIdException;
 import restaurant.utils.NumberFormatter;
 
@@ -32,9 +34,23 @@ public class MainCourse extends ItemWithIngredients {
 
     @Override
     public String toString() {
-        return getId() +
+        String mainCourseString = getId() +
                 " - " + getName() +
                 "\n\tDescrição: " + description +
                 "\n\tPreço: " + NumberFormatter.formatPrice(getUnitPrice());
+
+        ArrayList<Ingredient> ingredients = getIngredients();
+        if (ingredients.size() > 0) {
+            mainCourseString += "\n\tIngredientes: ";
+            for (int i = 0; i < ingredients.size(); i++) {
+                Ingredient ingredient = ingredients.get(i);
+                mainCourseString += ingredient.getName();
+                if (i < ingredients.size() - 1) {
+                    mainCourseString += ", ";
+                }
+            }
+        }
+
+        return mainCourseString;
     }
 }

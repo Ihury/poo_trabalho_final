@@ -1,5 +1,7 @@
 package restaurant.items;
 
+import java.util.ArrayList;
+
 import restaurant.exceptions.InvalidIdException;
 import restaurant.utils.NumberFormatter;
 
@@ -42,9 +44,23 @@ public class Dessert extends ItemWithIngredients {
 
     @Override
     public String toString() {
-        return getId() +
+        String dessertString = getId() +
                 " - " + getName() +
                 "\n\tDescrição: " + description +
                 "\n\tPreço: " + NumberFormatter.formatPrice(getUnitPrice());
+
+        ArrayList<Ingredient> ingredients = getIngredients();
+        if (ingredients.size() > 0) {
+            dessertString += "\n\tIngredientes: ";
+            for (int i = 0; i < ingredients.size(); i++) {
+                Ingredient ingredient = ingredients.get(i);
+                dessertString += ingredient.getName();
+                if (i < ingredients.size() - 1) {
+                    dessertString += ", ";
+                }
+            }
+        }
+
+        return dessertString;
     }
 }
