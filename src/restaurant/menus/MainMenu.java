@@ -9,4 +9,27 @@ public class MainMenu extends Menu {
         System.out.println("\n" + SEPARATOR_BAR);
         requestOption();
     }
+
+    public static void startMainMenu() {
+        MainMenu.showMain();
+        String opt = sc.nextLine();
+
+        switch (opt) {
+            case "1":
+                IngredientsMenu.startIngredientsMenu();
+                break;
+            case "2":
+                ItemsMenu.startItensMenu();
+                break;
+            case "v":
+                startMainMenu();
+                break;
+            case "s":
+                leave();
+                break;
+            default:
+                invalidOption();
+                startMainMenu();
+        }
+    }
 }
