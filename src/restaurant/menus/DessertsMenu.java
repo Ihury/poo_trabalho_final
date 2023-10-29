@@ -114,6 +114,8 @@ public class DessertsMenu extends Menu {
             infoMessage("Sobremesa adicionada!");
         } catch (InvalidIdException | IllegalArgumentException e) {
             infoMessage(e.getMessage());
+        } finally {
+            startDessertsMenu();
         }
     }
 

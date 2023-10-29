@@ -31,7 +31,7 @@ public class ItemsMenu extends Menu {
                 DessertsMenu.startDessertsMenu();
                 break;
             case "3":
-                // startDrinksMenu();
+                BeveragesMenu.startBeveragesMenu();
                 break;
             case "v":
                 MainMenu.startMainMenu();

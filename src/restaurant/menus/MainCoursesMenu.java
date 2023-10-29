@@ -113,6 +113,8 @@ public class MainCoursesMenu extends Menu {
             infoMessage("Prato adicionado!");
         } catch (InvalidIdException | IllegalArgumentException e) {
             infoMessage(e.getMessage());
+        } finally {
+            startMainCoursesMenu();
         }
     }
 

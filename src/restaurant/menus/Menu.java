@@ -8,7 +8,7 @@ public class Menu {
     public static final String SEPARATOR_BAR = "======================================";
 
     public static void showExtraOptions() {
-        System.out.println("Digite 's' para sair ou 'v' para voltar.");
+        System.out.println("(s) sair\n(v) voltar");
     }
 
     public static void requestOption() {
@@ -26,6 +26,7 @@ public class Menu {
     }
 
     public static void infoMessage(String text) {
+        clearConsole();
         System.out.println(text);
         waitEnter();
     }
