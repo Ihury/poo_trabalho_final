@@ -4,9 +4,7 @@ import restaurant.enums.PackageType;
 import restaurant.exceptions.InvalidIdException;
 import restaurant.utils.NumberFormatter;
 
-import java.io.Serializable;
-
-public class Beverage extends Item implements Serializable {
+public class Beverage extends Item {
     private double packageSizeInMilliliters;
     private PackageType packageType;
 

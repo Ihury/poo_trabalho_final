@@ -1,12 +1,11 @@
 package restaurant.items;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import restaurant.exceptions.InvalidIdException;
 import restaurant.utils.NumberFormatter;
 
-public class MainCourse extends ItemWithIngredients implements Serializable {
+public class MainCourse extends ItemWithIngredients {
     private String description;
     private String preparationTime;
 
