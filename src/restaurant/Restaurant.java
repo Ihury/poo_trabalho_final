@@ -1,5 +1,6 @@
 package restaurant;
 
+import restaurant.employees.Cook;
 import restaurant.items.Beverage;
 import restaurant.items.Dessert;
 import restaurant.items.Ingredient;
@@ -10,12 +11,14 @@ import java.util.ArrayList;
 public class Restaurant {
     private static ArrayList<Ingredient> ingredients;
     private static boolean ingredientesLoaded = false;
-    private static ArrayList<MainCourse> mainCourses = new ArrayList<>();
+    private static ArrayList<MainCourse> mainCourses;
     private static boolean mainCoursesLoaded = false;
-    private static ArrayList<Dessert> desserts = new ArrayList<>();
+    private static ArrayList<Dessert> desserts;
     private static boolean dessertsLoaded = false;
-    private static ArrayList<Beverage> beverages = new ArrayList<>();
+    private static ArrayList<Beverage> beverages;
     private static boolean beveragesLoaded = false;
+    private static ArrayList<Cook> cooks;
+    private static boolean cooksLoaded = false;
 
     public static boolean addIngredient(Ingredient ingredient) {
         if (!ingredientesLoaded)
@@ -142,6 +145,37 @@ public class Restaurant {
         else {
             beverages.remove(position);
             Persist.save(beverages, "persistance/beverages.dat");
+            return true;
+        }
+    }
+
+    public static boolean addCook(Cook cook) {
+        if (!cooksLoaded)
+            getCooks();
+        if (cook == null)
+            return false;
+        else {
+            cooks.add(cook);
+            Persist.save(cooks, "persistance/cooks.dat");
+            return true;
+        }
+    }
+
+    public static ArrayList<Cook> getCooks() {
+        if (!cooksLoaded) {
+            cooks = (ArrayList<Cook>) Persist.get("persistance/cooks.dat");
+            if (cooks == null)
+                cooks = new ArrayList<>();
+        }
+        return cooks;
+    }
+
+    public static boolean removeCook(int position) {
+        if (position < 0 || position >= cooks.size())
+            return false;
+        else {
+            cooks.remove(position);
+            Persist.save(cooks, "persistance/cooks.dat");
             return true;
         }
     }

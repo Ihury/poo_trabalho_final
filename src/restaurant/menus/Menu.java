@@ -37,6 +37,7 @@ public class Menu {
     }
 
     protected static void leave() {
+        clearConsole();
         System.exit(0);
     }
 }
