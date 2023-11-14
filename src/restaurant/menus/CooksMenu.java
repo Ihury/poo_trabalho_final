@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import restaurant.Restaurant;
 import restaurant.employees.Cook;
-import restaurant.exceptions.InvalidIdException;
-import restaurant.items.MainCourse;
 
 public class CooksMenu extends Menu {
     public static void showMain() {
