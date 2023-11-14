@@ -2,9 +2,10 @@ package restaurant.items;
 
 import restaurant.exceptions.InvalidIdException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ItemWithIngredients extends Item {
+public class ItemWithIngredients extends Item implements Serializable {
     private final ArrayList<Ingredient> ingredients = new ArrayList<>();
 
     public ItemWithIngredients(String id, String name, double unitPrice, double costPrice) throws InvalidIdException, IllegalArgumentException {

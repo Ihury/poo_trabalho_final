@@ -76,7 +76,7 @@ public class MainCoursesMenu extends Menu {
     }
 
     public static void showMainCourses() {
-        MainCoursesMenu.showMainCourses(Restaurant.mainCourses);
+        MainCoursesMenu.showMainCourses(Restaurant.getMainCourses());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -110,7 +110,7 @@ public class MainCoursesMenu extends Menu {
 
             MainCourse mainCourse = new MainCourse(id, name, price, costPrice, description, preparationTime);
             IngredientsMenu.addIngredientsToItem(mainCourse);
-            Restaurant.mainCourses.add(mainCourse);
+            Restaurant.addMainCourse(mainCourse);
             infoMessage("Prato adicionado!");
         } catch (InvalidIdException | IllegalArgumentException e) {
             infoMessage(e.getMessage());
@@ -120,7 +120,7 @@ public class MainCoursesMenu extends Menu {
     }
 
     public static void removeMainCourse() {
-        MainCoursesMenu.showRemoveMainCourse(Restaurant.mainCourses);
+        MainCoursesMenu.showRemoveMainCourse(Restaurant.getMainCourses());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -133,8 +133,8 @@ public class MainCoursesMenu extends Menu {
             default:
                 try {
                     int mainCourseIndex = Integer.parseInt(opt);
-                    if (mainCourseIndex > 0 && mainCourseIndex <= Restaurant.mainCourses.size()) {
-                        Restaurant.mainCourses.remove(mainCourseIndex - 1);
+                    if (mainCourseIndex > 0 && mainCourseIndex <= Restaurant.getMainCourses().size()) {
+                        Restaurant.removeMainCourse(mainCourseIndex - 1);
                     }
                     startMainCoursesMenu();
                 } catch (NumberFormatException e) {

@@ -78,7 +78,7 @@ public class IngredientsMenu extends Menu {
     }
 
     public static void showIngredients() {
-        IngredientsMenu.showIngredients(Restaurant.ingredients);
+        IngredientsMenu.showIngredients(Restaurant.getIngredients());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -90,6 +90,7 @@ public class IngredientsMenu extends Menu {
                 break;
             default:
                 invalidOption();
+                showIngredients();
         }
     }
 
@@ -97,13 +98,13 @@ public class IngredientsMenu extends Menu {
         Menu.clearConsole();
         System.out.print("Informe o nome do ingrediente: ");
         String name = sc.nextLine();
-        Restaurant.ingredients.add(new Ingredient(name));
+        Restaurant.addIngredient(new Ingredient(name));
         infoMessage("Ingrediente adicionado com sucesso!");
         startIngredientsMenu();
     }
 
     public static void removeIngredient() {
-        IngredientsMenu.showRemoveIngredient(Restaurant.ingredients);
+        IngredientsMenu.showRemoveIngredient(Restaurant.getIngredients());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -116,8 +117,8 @@ public class IngredientsMenu extends Menu {
             default:
                 try {
                     int ingredientIndex = Integer.parseInt(opt);
-                    if (ingredientIndex > 0 && ingredientIndex <= Restaurant.ingredients.size()) {
-                        Restaurant.ingredients.remove(ingredientIndex - 1);
+                    if (ingredientIndex > 0 && ingredientIndex <= Restaurant.getIngredients().size()) {
+                        Restaurant.removeIngredient(ingredientIndex - 1);
                     }
                     startIngredientsMenu();
                 } catch (NumberFormatException e) {
@@ -128,7 +129,7 @@ public class IngredientsMenu extends Menu {
     }
 
     public static void addIngredientsToItem(ItemWithIngredients item) {
-        if (Restaurant.ingredients.size() > 0) {
+        if (!Restaurant.getIngredients().isEmpty()) {
             System.out.print("Deseja adicionar um ingrediente ao item?\n1 - Sim\n2 - Não\nEscolha: ");
             String choose = sc.nextLine();
 
@@ -148,7 +149,7 @@ public class IngredientsMenu extends Menu {
     private static void addIngredientToItem(ItemWithIngredients item) {
         clearConsole();
         showHead();
-        listIngredients(Restaurant.ingredients);
+        listIngredients(Restaurant.getIngredients());
         showFooter();
         System.out.print("Informe o ingrediente que deseja adicionar: ");
         String opt = sc.nextLine();
@@ -160,12 +161,13 @@ public class IngredientsMenu extends Menu {
                 break;
             default:
                 int ingredientIndex = Integer.parseInt(opt);
-                Ingredient ingredient = Restaurant.ingredients.get(ingredientIndex - 1);
+                Ingredient ingredient = Restaurant.getIngredients().get(ingredientIndex - 1);
                 item.addIngredient(ingredient);
+                Restaurant.updateItens();
                 infoMessage("Ingrediente adicionado com sucesso!");
                 clearConsole();
                 ArrayList<Ingredient> ingredients = item.getIngredients();
-                if (ingredients.size() > 0) {
+                if (!ingredients.isEmpty()) {
                     System.out.println(SEPARATOR_BAR);
                     System.out.println("INGREDIENTES ADICIONADOS");
                     System.out.println(SEPARATOR_BAR);

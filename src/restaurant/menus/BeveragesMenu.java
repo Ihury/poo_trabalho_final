@@ -77,7 +77,7 @@ public class BeveragesMenu extends Menu {
     }
 
     public static void showBeverages() {
-        BeveragesMenu.showBeverages(Restaurant.beverages);
+        BeveragesMenu.showBeverages(Restaurant.getBeverages());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -111,7 +111,7 @@ public class BeveragesMenu extends Menu {
             int packageTypeIndex = Integer.parseInt(sc.nextLine());
             if (packageTypeIndex > 0 && packageTypeIndex <= PackageType.values().length) {
                 Beverage beverage = new Beverage(id, name, price, costPrice, packageSize, PackageType.values()[packageTypeIndex - 1]);
-                Restaurant.beverages.add(beverage);
+                Restaurant.addBeverage(beverage);
                 infoMessage("Bebida adicionada!");
             } else {
                 invalidOption();
@@ -130,7 +130,7 @@ public class BeveragesMenu extends Menu {
     }
 
     public static void removeBeverage() {
-        BeveragesMenu.showRemoveBeverage(Restaurant.beverages);
+        BeveragesMenu.showRemoveBeverage(Restaurant.getBeverages());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -143,8 +143,8 @@ public class BeveragesMenu extends Menu {
             default:
                 try {
                     int beverageIndex = Integer.parseInt(opt);
-                    if (beverageIndex > 0 && beverageIndex <= Restaurant.beverages.size()) {
-                        Restaurant.beverages.remove(beverageIndex - 1);
+                    if (beverageIndex > 0 && beverageIndex <= Restaurant.getBeverages().size()) {
+                        Restaurant.removeBeverage(beverageIndex - 1);
                     }
                     startBeveragesMenu();
                 } catch (NumberFormatException e) {

@@ -6,3 +6,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Persistance files ###
+*.dat

@@ -76,7 +76,7 @@ public class DessertsMenu extends Menu {
     }
 
     public static void showDesserts() {
-        DessertsMenu.showDesserts(Restaurant.desserts);
+        DessertsMenu.showDesserts(Restaurant.getDesserts());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -112,7 +112,7 @@ public class DessertsMenu extends Menu {
 
             Dessert dessert = new Dessert(id, name, price, costPrice, description, preparationTime, calorieCount);
             IngredientsMenu.addIngredientsToItem(dessert);
-            Restaurant.desserts.add(dessert);
+            Restaurant.addDessert(dessert);
             infoMessage("Sobremesa adicionada!");
         } catch (InvalidIdException | IllegalArgumentException e) {
             infoMessage(e.getMessage());
@@ -122,7 +122,7 @@ public class DessertsMenu extends Menu {
     }
 
     public static void removeDessert() {
-        DessertsMenu.showRemoveDessert(Restaurant.desserts);
+        DessertsMenu.showRemoveDessert(Restaurant.getDesserts());
         String opt = sc.nextLine();
 
         switch (opt) {
@@ -135,8 +135,8 @@ public class DessertsMenu extends Menu {
             default:
                 try {
                     int dessertIndex = Integer.parseInt(opt);
-                    if (dessertIndex > 0 && dessertIndex <= Restaurant.desserts.size()) {
-                        Restaurant.desserts.remove(dessertIndex - 1);
+                    if (dessertIndex > 0 && dessertIndex <= Restaurant.getDesserts().size()) {
+                        Restaurant.removeDessert(dessertIndex - 1);
                     }
                     startDessertsMenu();
                 } catch (NumberFormatException e) {

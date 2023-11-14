@@ -4,7 +4,9 @@ import restaurant.exceptions.InvalidIdException;
 import restaurant.validators.IdValidator;
 import restaurant.validators.PriceValidator;
 
-public abstract class Item {
+import java.io.Serializable;
+
+public abstract class Item implements Serializable {
     private String id;
     private String name;
     private double unitPrice;

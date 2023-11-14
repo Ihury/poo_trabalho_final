@@ -1,11 +1,12 @@
 package restaurant.items;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import restaurant.exceptions.InvalidIdException;
 import restaurant.utils.NumberFormatter;
 
-public class Dessert extends ItemWithIngredients {
+public class Dessert extends ItemWithIngredients implements Serializable {
     private String description;
     private String preparationTime;
     private double calorieCount;
