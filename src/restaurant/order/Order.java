@@ -49,6 +49,14 @@ public class Order implements Serializable {
     paymentDate = new Date();
   }
 
+  public Waiter getWaiter() {
+    return waiter;
+  }
+
+  public Cook getCook() {
+    return cook;
+  }
+
   @Override
   public String toString() {
     String orderItemsString = "";

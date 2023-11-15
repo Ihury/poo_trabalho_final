@@ -8,6 +8,7 @@ public class MainMenu extends Menu {
         System.out.println("2 - Itens");
         System.out.println("3 - Funcionários");
         System.out.println("4 - Pedidos");
+        System.out.println("5 - Folha de pagamentos");
         System.out.println("\n" + SEPARATOR_BAR);
         requestOption();
     }
@@ -28,6 +29,9 @@ public class MainMenu extends Menu {
                 break;
             case "4":
                 OrdersMenu.startOrdersMenu();
+                break;
+            case "5":
+                PayrollMenu.startPayrollMenu();
                 break;
             case "v":
                 startMainMenu();
