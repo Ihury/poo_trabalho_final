@@ -6,6 +6,7 @@ import restaurant.items.Beverage;
 import restaurant.items.Dessert;
 import restaurant.items.Ingredient;
 import restaurant.items.MainCourse;
+import restaurant.order.Order;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,8 @@ public class Restaurant {
     private static boolean cooksLoaded = false;
     private static ArrayList<Waiter> waiters;
     private static boolean waitersLoaded = false;
+    private static ArrayList<Order> orders;
+    private static boolean ordersLoaded = false;
 
     public static boolean addIngredient(Ingredient ingredient) {
         if (!ingredientesLoaded)
@@ -222,5 +225,41 @@ public class Restaurant {
     public static void updateWaiters() {
         Persist.save(waiters, "persistance/waiters.dat");
         getWaiters();
+    }
+
+    public static boolean addOrder(Order order) {
+        if (!ordersLoaded)
+            getOrders();
+        if (order == null)
+            return false;
+        else {
+            orders.add(order);
+            Persist.save(orders, "persistance/orders.dat");
+            return true;
+        }
+    }
+
+    public static ArrayList<Order> getOrders() {
+        if (!ordersLoaded) {
+            orders = (ArrayList<Order>) Persist.get("persistance/orders.dat");
+            if (orders == null)
+                orders = new ArrayList<>();
+        }
+        return orders;
+    }
+
+    public static boolean removeOrder(int position) {
+        if (position < 0 || position >= orders.size())
+            return false;
+        else {
+            orders.remove(position);
+            Persist.save(orders, "persistance/orders.dat");
+            return true;
+        }
+    }
+
+    public static void updateOrders() {
+        Persist.save(orders, "persistance/orders.dat");
+        getOrders();
     }
 }

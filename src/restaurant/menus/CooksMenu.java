@@ -289,7 +289,7 @@ public class CooksMenu extends Menu {
                         System.out.println(SEPARATOR_BAR);
                     }
 
-                    System.out.print("Deseja adicionar outra sobremesa?\n1 - Sim\n2 - Não\nEscolha: ");
+                    System.out.print("Deseja adicionar outro prato?\n1 - Sim\n2 - Não\nEscolha: ");
                     String choose = sc.nextLine();
                     switch (choose) {
                         case "1":
