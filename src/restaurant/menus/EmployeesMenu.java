@@ -27,7 +27,7 @@ public class EmployeesMenu extends Menu {
                 CooksMenu.startCooksMenu();
                 break;
             case "2":
-//                DessertsMenu.startDessertsMenu();
+                WaitersMenu.startWaitersMenu();
                 break;
             case "v":
                 MainMenu.startMainMenu();

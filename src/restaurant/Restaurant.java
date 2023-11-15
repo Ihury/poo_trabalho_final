@@ -1,6 +1,7 @@
 package restaurant;
 
 import restaurant.employees.Cook;
+import restaurant.employees.Waiter;
 import restaurant.items.Beverage;
 import restaurant.items.Dessert;
 import restaurant.items.Ingredient;
@@ -19,6 +20,8 @@ public class Restaurant {
     private static boolean beveragesLoaded = false;
     private static ArrayList<Cook> cooks;
     private static boolean cooksLoaded = false;
+    private static ArrayList<Waiter> waiters;
+    private static boolean waitersLoaded = false;
 
     public static boolean addIngredient(Ingredient ingredient) {
         if (!ingredientesLoaded)
@@ -183,5 +186,41 @@ public class Restaurant {
     public static void updateCooks() {
         Persist.save(cooks, "persistance/cooks.dat");
         getCooks();
+    }
+
+    public static boolean addWaiter(Waiter waiter) {
+        if (!waitersLoaded)
+            getWaiters();
+        if (waiter == null)
+            return false;
+        else {
+            waiters.add(waiter);
+            Persist.save(waiters, "persistance/waiters.dat");
+            return true;
+        }
+    }
+
+    public static ArrayList<Waiter> getWaiters() {
+        if (!waitersLoaded) {
+            waiters = (ArrayList<Waiter>) Persist.get("persistance/waiters.dat");
+            if (waiters == null)
+                waiters = new ArrayList<>();
+        }
+        return waiters;
+    }
+
+    public static boolean removeWaiter(int position) {
+        if (position < 0 || position >= waiters.size())
+            return false;
+        else {
+            waiters.remove(position);
+            Persist.save(waiters, "persistance/waiters.dat");
+            return true;
+        }
+    }
+
+    public static void updateWaiters() {
+        Persist.save(waiters, "persistance/waiters.dat");
+        getWaiters();
     }
 }

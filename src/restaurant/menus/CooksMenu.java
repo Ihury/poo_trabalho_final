@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import restaurant.Restaurant;
 import restaurant.employees.Cook;
-import restaurant.items.Ingredient;
 import restaurant.items.ItemWithIngredients;
-import restaurant.items.MainCourse;
 
 public class CooksMenu extends Menu {
     public static void showMain() {
@@ -107,8 +105,10 @@ public class CooksMenu extends Menu {
             String maritalStatus = sc.nextLine();
             System.out.print("Informe o endereço do cozinheiro: ");
             String address = sc.nextLine();
+            System.out.print("Informe a carteira de trabalho do cozinheiro: ");
+            String workCard = sc.nextLine();
 
-            Cook cook = new Cook(name, cpf, rg, maritalStatus, address);
+            Cook cook = new Cook(name, cpf, rg, maritalStatus, address, workCard);
             addFoodsToCook(cook);
             Restaurant.addCook(cook);
             infoMessage("Cozinheiro adicionado!");
@@ -120,7 +120,6 @@ public class CooksMenu extends Menu {
     }
 
     public static void removeCook() {
-        MainCoursesMenu.showRemoveMainCourse(Restaurant.getMainCourses());
         showRemoveCook(Restaurant.getCooks());
         String opt = sc.nextLine();
 

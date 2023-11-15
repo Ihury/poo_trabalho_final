@@ -3,9 +3,9 @@ package restaurant.employees;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
-    private String name, CPF, RG, maritalStatus, address;
+    private String name, CPF, RG, maritalStatus, address, workCard;
 
-    public Employee(String name, String CPF, String RG, String civilState, String address) {
+    public Employee(String name, String CPF, String RG, String civilState, String address, String workCard) {
         setName(name);
         setCPF(CPF);
         setRG(RG);
@@ -51,5 +51,13 @@ public class Employee implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getWorkCard() {
+        return workCard;
+    }
+
+    public void setWorkCard(String workCard) {
+        this.workCard = workCard;
     }
 }

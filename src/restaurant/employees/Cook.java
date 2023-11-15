@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Cook extends Employee {
     private ArrayList<ItemWithIngredients> foods;
 
-    public Cook (String name, String CPF, String RG, String civilState, String address) {
-        super(name, CPF, RG, civilState, address);
+    public Cook (String name, String CPF, String RG, String civilState, String address, String workCard) {
+        super(name, CPF, RG, civilState, address, workCard);
         foods = new ArrayList<>();
     }
 
@@ -28,6 +28,7 @@ public class Cook extends Employee {
         StringBuilder cookString = new StringBuilder(getName() +
                 "\n\tCPF: " + getCPF() +
                 "\n\tRG: " + getRG() +
+                "\n\tCarteira de trabalho: " + getWorkCard() +
                 "\n\tEstado civil: " + getMaritalStatus() +
                 "\n\tEndereço: " + getAddress() +
                 "\n\tPratos: ");
