@@ -161,8 +161,10 @@ public class IngredientsMenu extends Menu {
                 break;
             default:
                 int ingredientIndex = Integer.parseInt(opt);
-                Ingredient ingredient = Restaurant.getIngredients().get(ingredientIndex - 1);
-                item.addIngredient(ingredient);
+                if (ingredientIndex > 0 && ingredientIndex < Restaurant.getIngredients().size()) {
+                    Ingredient ingredient = Restaurant.getIngredients().get(ingredientIndex - 1);
+                    item.addIngredient(ingredient);
+                }                                
                 Restaurant.updateItens();
                 infoMessage("Ingrediente adicionado com sucesso!");
                 clearConsole();

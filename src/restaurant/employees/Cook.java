@@ -1,19 +1,17 @@
 package restaurant.employees;
 
 import restaurant.items.ItemWithIngredients;
-
-import java.util.List;
 import java.util.ArrayList;
 
 public class Cook extends Employee {
-    private List<ItemWithIngredients> foods;
+    private ArrayList<ItemWithIngredients> foods;
 
     public Cook (String name, String CPF, String RG, String civilState, String address) {
         super(name, CPF, RG, civilState, address);
         foods = new ArrayList<>();
     }
 
-    public List<ItemWithIngredients> getFoods() {
+    public ArrayList<ItemWithIngredients> getFoods() {
         return foods;
     }
 

@@ -179,4 +179,9 @@ public class Restaurant {
             return true;
         }
     }
+
+    public static void updateCooks() {
+        Persist.save(cooks, "persistance/cooks.dat");
+        getCooks();
+    }
 }
